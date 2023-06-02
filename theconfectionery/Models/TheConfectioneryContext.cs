@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-namespace FantacyRecipe.Models
+namespace TheConfectionery.Models
 {
   public class TheConfectioneryContext : IdentityDbContext<ApplicationUser>
   {
