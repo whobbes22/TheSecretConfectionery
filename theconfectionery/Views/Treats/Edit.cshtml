@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@model TheConfectionery.Models.Treat
+
+<h4>Edit @Html.DisplayFor(m=>m.TreatName)</h4>
+
+<p>@Html.ValidationMessageFor(m=>m.TreatName,"", new {@class = "text-danger", @style = "font-weight: 600;"})</p>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(m=> m.TreatId)
+
+  <p>Recipe Name: @Html.TextBoxFor(model => model.TreatName)</p>
+  <p>Recipe Instructions:</p>
+  <p>@Html.TextBoxFor(model => model.TreatInstructions)</p>
+
+  <input type="submit" value="Edit Treat" class="btn btn-default" />
+}
+
+<p>@Html.ActionLink("Show all Treats", "Index")</p>
