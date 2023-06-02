@@ -1,0 +1,45 @@
+@{
+  Layout = "_Layout";
+}
+
+@using TheConfectionery.Models
+@model TheConfectionery.Models.Treat
+
+<h2>Treat Details</h2>
+<hr />
+<h3>Treat Name: @Html.DisplayFor(model => model.TreatName)</h3>
+
+<p>Instructions: @Html.DisplayFor(model => model.TreatInstructions)</p>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>This recipe does not have any flavors.</p>
+}
+else
+{
+  <h4>Flavors this treat has:</h4>
+  <ul>
+  @foreach(TreatFlavor join in Model.JoinEntities)
+  {
+    <li>@join.Flavor.FlavorName</li>
+
+    @using (Html.BeginForm("DeleteJoin", "Treats"))
+    {
+      @Html.Hidden("joinId", @join.TreatFlavorId)
+      @if (User.Identity.IsAuthenticated)
+      {
+        <input type="submit" value="Remove"/>
+      }
+    }
+    
+  }
+  </ul>
+}
+
+<p>@Html.ActionLink("Back to Treat List", "Index")</p>
+
+<p>@Html.ActionLink("Add a Flavor to this Treat", "AddFlavor", new { id = Model.TreatId })</p>
+
+<p>@Html.ActionLink("Edit Treat", "Edit", new { id = Model.TreatId })</p>
+
+<p>@Html.ActionLink("Delete Treat from existance", "Delete", new { id = Model.TreatId })</p>
