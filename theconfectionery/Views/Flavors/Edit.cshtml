@@ -1,0 +1,19 @@
+@{
+  Layout = "_Layout";
+}
+
+@model TheConfectionery.Models.Flavor
+
+<h4>Edit @Html.DisplayFor(m=>m.FlavorName)</h4>
+
+<p>@Html.ValidationMessageFor(m=>m.FlavorName,"", new {@class = "text-danger", @style = "font-weight: 600;"})</p>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(m=> m.FlavorId)
+
+  <p>Flavor Type: @Html.TextBoxFor(model => model.FlavorName)</p>
+  <input type="submit" value="Edit Treat" class="btn btn-default" />
+}
+
+<p>@Html.ActionLink("Show all Treats", "Index")</p>
