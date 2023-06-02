@@ -151,12 +151,12 @@ namespace TheConfectionery.Controllers
     public ActionResult AddTreat(Flavor flavor, int treatId)
     {
       #nullable enable
-      TreatFlavor? joinEntity = _db.TreatFlavors.FirstOrDefault(join => (join.FlavorId == treatId && join.FlavorId == flavor.FlavorId));
+      TreatFlavor? joinEntity = _db.TreatFlavors.FirstOrDefault(join => (join.TreatId == treatId && join.FlavorId == flavor.FlavorId));
       #nullable disable
 
       if (joinEntity == null && treatId != 0)
       {
-        _db.TreatFlavors.Add(new TreatFlavor() { FlavorId = treatId, TreatId = flavor.FlavorId });
+        _db.TreatFlavors.Add(new TreatFlavor() { TreatId = treatId, FlavorId = flavor.FlavorId });
         _db.SaveChanges();
       }
 
