@@ -34,7 +34,7 @@ namespace TheConfectionery.Controllers
       return View(allTreats);
     }
 
-    public async Task<ActionResult> MyRecipes()
+    public async Task<ActionResult> MyTreats()
     {
       string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
