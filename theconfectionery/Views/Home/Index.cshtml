@@ -1,0 +1,42 @@
+@{
+  Layout = "_Layout";
+}
+
+@using TheConfectionery.Models;
+
+<h1 id="header">Current Treats and Flavors Available!</h1>
+<hr>
+ 
+  
+  <h4>Treats</h4>
+  @if (Model["treats"].Length == 0)
+  {
+    <p>No treats have been added yet!</p>
+  } 
+  <ul>
+    @foreach (Treat treat in Model["treats"])
+    {
+      <li>@Html.ActionLink(@treat.TreatName, "Details", "Treats", new { id = @treat.TreatId})</li>
+    }
+  </ul>
+
+  <h4>Flavors</h4>
+  @if (Model["flavors"].Length == 0)
+  {
+    <p>No flavors have been added yet!</p>
+  } 
+  <ul>
+    @foreach (Flavor flavor in Model["flavors"])
+    {
+      <li>@Html.ActionLink(@flavor.FlavorName, "Details", "Flavors", new { id = @flavor.FlavorId})</li>
+    }
+  </ul>
+
+<hr>
+@if (User.Identity.IsAuthenticated)
+{
+  <p>Hello @User.Identity.Name!</p>
+  <p>@Html.ActionLink("View my Treats", "MyTreats", "Treats")</p>
+  <p>@Html.ActionLink("View my Flavors", "MyFlavors","Flavors")</p>
+}
+
