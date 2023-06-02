@@ -1,0 +1,36 @@
+@{
+  Layout = "_Layout";
+}
+
+@using TheConfectionery.ViewModels
+
+@model RegisterViewModel
+
+<h2>Register a new user</h2>
+<hr />
+
+@if(!ViewData.ModelState.IsValid) 
+{
+  @Html.ValidationSummary("Please fix the following error(s) and then resubmit the form:") 
+}
+
+@using (Html.BeginForm("Register", "Account", FormMethod.Post))
+{
+  <div class="row">
+    <div class="col-2">Email Adress: </div>
+    <div class="col">@Html.TextBoxFor(user=> user.Email)</div>
+  </div>
+    <div class="row">
+    <div class="col-2">Password: </div>
+    <div class="col">@Html.TextBoxFor(user=> user.Password)</div>
+  </div>
+    <div class="row">
+    <div class="col-2">Confirm Password: </div>
+    <div class="col">@Html.TextBoxFor(user=> user.ConfirmPassword)</div>
+  </div>
+  
+
+  <input type="submit" value="Register" />
+}
+
+<p>@Html.ActionLink("Back to accounts page", "Index")</p>

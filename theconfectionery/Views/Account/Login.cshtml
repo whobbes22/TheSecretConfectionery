@@ -1,0 +1,32 @@
+@{
+  Layout = "_Layout";
+}
+
+@using TheConfectionery.ViewModels
+
+@model LoginViewModel
+
+<h2>Log in with your account</h2>
+<hr />
+
+@if(!ViewData.ModelState.IsValid) 
+{
+  @Html.ValidationSummary("Please fix the following error(s) and then resubmit the form:") 
+}
+
+@using (Html.BeginForm())
+{
+   <div class="row">
+    <div class="col-2">Email Adress: </div>
+    <div class="col">@Html.TextBoxFor(m=> m.Email)</div>
+  </div>
+    <div class="row">
+    <div class="col-2">Password: </div>
+    <div class="col">@Html.TextBoxFor(m=> m.Password)</div>
+  </div>
+
+  <input type="submit" value="Log in" />
+}
+
+<p>@Html.ActionLink("Register for an account", "Register")</p>
+<p>@Html.ActionLink("Back to accounts page", "Index")</p>
