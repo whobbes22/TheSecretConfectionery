@@ -1,4 +1,4 @@
-# _The Factory_
+# _The Secret Confectionery_
 
 #### By _**Joseph Wahbeh**_
 
